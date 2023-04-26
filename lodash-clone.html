@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lodash-clone手写实现</title>
+</head>
+<body>
+    
+</body>
+<script>
+/**
+ * 突发其感，想简单手写一下关于深拷贝插件lodash的clone,写得不好，大家随便看看哈（实现原理：for...in循环+数据类型判断+ 递归）
+*/
+function  cloneDeep(obj){
+                //如果是数组  创建一个空数组 否则创建一个 空对象
+                let instance = Array.isArray(obj)?[]:{};
+                //循环对象或数组中的每个元素或属性 拿出属性值 或元素值 一个个的往 新创建的空对象或空数组中添加即可
+                for(let key  in  obj){
+                    //如果是属性是引用数据类型 --- 不是一个函数
+                    if( obj[key] instanceof Object &&  ( typeof obj[key] )!='function'  ){
+                      
+                         instance[key] = cloneDeep(obj[key])
+                    }else{
+                         //否则不是引用属性类型 直接添加到新数组 或新对象中即可
+                        instance[key] = obj[key];
+                    }
+                }
+                return instance;
+                
+            }
+            
+
+</script>
+</html>
