@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map原理</title>
+</head>
+<body>
+    <!-- map原理 -->
+</body>
+<script>
+/**
+ * map作用其遍历数组其原理就是简单的循环+回调以下是我的实现方案
+*/
+    Array.prototype.map = function(callback){
+   let arr = []
+   for(let i=0;i<this.length;i++){
+      arr[i] = callback(this[i],i)
+   }
+   return arr
+}
+
+
+</script>
+</html>
